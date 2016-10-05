@@ -1,0 +1,12 @@
+﻿  MainComponent.cpp
+c:\users\cheng\desktop\basicaudio\source\Sine.h(27): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\cheng\desktop\basicaudio\source\Sine.h(37): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\cheng\desktop\basicaudio\source\Sine.h(37): warning C4244: 'initializing': conversion from 'double' to 'const float', possible loss of data
+..\..\Source\MainComponent.cpp(23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+..\..\Source\MainComponent.cpp(104): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+..\..\Source\MainComponent.cpp(107): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+..\..\Source\MainComponent.cpp(135): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+..\..\Source\MainComponent.cpp(136): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+..\..\Source\MainComponent.cpp(156): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  BasicAudio.vcxproj -> C:\Users\Cheng\Desktop\BasicAudio\Builds\VisualStudio2015\x64\Debug\BasicAudio.exe
+  BasicAudio.vcxproj -> x64\Debug\\BasicAudio.pdb (Full PDB)
