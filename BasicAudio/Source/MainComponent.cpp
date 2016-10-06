@@ -11,7 +11,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Sine.h"
-#define oscNum 7
+#define oscNum 7 //number of the oscs that you're using
 
 class MainContentComponent :
     public AudioAppComponent,
@@ -22,8 +22,9 @@ public:
     MainContentComponent() :  onOff (0), samplingRate(0.0)
     {
 
-        // configuring frequency slider and adding it to the main window
+        //use for loop to configure multiple oscs
 		for (int i = 0; i < oscNum; i++) {
+		    // configuring frequency slider and adding it to the main window
 			addAndMakeVisible(frequencySlider[i]);
 			frequencySlider[i].setRange(50.0, 5000.0);
 			frequencySlider[i].setSkewFactorFromMidPoint(500.0);
@@ -49,10 +50,12 @@ public:
 			gainLabel[i].setText("Gain", dontSendNotification);
 			gainLabel[i].attachToComponent(&gainSlider[i], true);
 
+			//configuring mute button and add it to the main window
 			addAndMakeVisible(muteButton[i]);
 			onMute[i] = 0;
 			muteButton[i].addListener(this);
 
+			//configuring mute label and add it to the main window
 			addAndMakeVisible(muteLabel[i]);
 			muteLabel[i].setText("Mute", dontSendNotification);
 			muteLabel[i].attachToComponent(&muteButton[i], true);
@@ -69,10 +72,6 @@ public:
         onOffLabel.setText ("On/Off", dontSendNotification);
         onOffLabel.attachToComponent (&onOffButton, true);
 
-
-
-
-        
         setSize (600, oscNum*80 + 56 + 40);
         nChans = 2;
         setAudioChannels (0, nChans); // no inputs, one output
@@ -120,12 +119,14 @@ public:
         else if(button == &onOffButton && !onOffButton.getToggleState() ){
             onOff = 0;
         }
-
+        //mute one osc
 		for (int i = 0; i < oscNum; i++) {
 			if (button == &muteButton[i] && muteButton[i].getToggleState()) {
 				onMute[i] = 1;
 			}
-			else onMute[i] = 0;
+			else if(button == &muteButton[i] && !muteButton[i].getToggleState()){
+				onMute[i] = 0;
+			}
 		}
     }
     
@@ -156,7 +157,6 @@ public:
 							buffer0[sample] += sine[i].tick() * gain[i];
 						}
 					}
-				//buffer0[sample] = sine[0].tick() * gain[0] + sine[1].tick() * gain[1];
 				buffer1[sample] = buffer0[sample];
 			}
 			else {
